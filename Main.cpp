@@ -41,10 +41,48 @@ int main()
 	}
 
 	//cout << root.left->left->right->getLetter();
-	encode("hello", legend);
+	/*encode("configuration", legend);
 	cout << endl;
 	decodeHelper("-.-. --- -. ..-. .. --. ..- .-. .- - .. --- -.", &root);
-	cout << endl;
+	cout << endl;*/
+
+	char choice;
+	string userText;
+	
+	cout << "Please select one of the following options" << endl;
+	cout << "  1. Encode into morse" << endl;
+	cout << "  2. Decode existing morse" << endl;
+	cout << "  3. Quit the program" << endl;
+	cout << "Select now: ";
+	cin >> choice;
+	cin.clear();
+	while (choice != '3')
+	{
+		if (choice == '1')
+		{
+			cout << "Enter message to encode" << endl;
+			cin >> userText;
+			encode(userText, legend);
+			cout << endl << endl;
+		}
+		if (choice == '2')
+		{
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			cout << "Enter morse to decode \n" << endl;
+			getline(cin, userText);
+			decodeHelper(userText, &root);
+			cout << endl << endl;
+
+		}
+		if (choice != '1' && choice != '2' && choice != '3')
+			cout << "No command corresponding to that input. ";
+		cout << "Please select one of the following options" << endl;
+		cout << "  1. Encode into morse" << endl;
+		cout << "  2. Decode existing morse" << endl;
+		cout << "  3. Quit the program" << endl;
+		cin >> choice;
+		
+	}
 	system("pause");
 	return 0;
 }
