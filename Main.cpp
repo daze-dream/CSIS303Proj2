@@ -43,7 +43,7 @@ int main()
 	//cout << root.left->left->right->getLetter();
 	encode("hello", legend);
 	cout << endl;
-	decodeHelper(".... . ._.. ._.. ___", &root);
+	decodeHelper("-.-. --- -. ..-. .. --. ..- .-. .- - .. --- -.", &root);
 	cout << endl;
 	system("pause");
 	return 0;
@@ -86,7 +86,7 @@ void decode(queue<char> &q, TreeNode *n)
 		q.pop();
 		decode(q, n->left);
 	}
-	else if (q.front() == '_')
+	else if (q.front() == '_' || q.front() == '-')
 	{
 		q.pop();
 		decode(q, n->right);
@@ -106,7 +106,7 @@ void addNode(queue<char> &q, char letter, string code, TreeNode *n)
 			n->left = new TreeNode;
 		addNode(q, letter, code, n->left);
 	}
-	else if (q.front() == '_')
+	else if (q.front() == '_' || q.front() == '-')
 	{
 		q.pop();
 		if(n->right == NULL)
